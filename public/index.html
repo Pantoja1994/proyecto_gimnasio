@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Fit Systems</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!--Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Bebas Neue:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <!-- Menú izquierdo -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Nosotros</a>
+                </li>
+            </ul>
+            <!-- Logo centrado -->
+            <a class="navbar-brand mx-auto" href="#">
+                <img src="images/BODYFITCENTERLOGO.png" alt="PowerFit Logo" class="logo">
+            </a>
+            <!-- Menú derecho -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#bmi-calculator">Calculadora</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#trainers">Entrenadores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ubicacion">Ubicación</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero d-flex flex-column align-items-center justify-content-center text-center text-light" style="background-image: url('images/gym2.jpg'); height: 100vh;">
+        <div class="container">
+            <h1 class="display-4">Transforma tu cuerpo y mente</h1>
+            <p class="lead">Únete a <b>Body Fit Systems</b> hoy mismo</p>
+            <a href="retos.html" class="btn btn-custom btn-lg mt-4">ÚNETE AL RETO</a>
+        </div>
+
+        <!-- Redes sociales centradas al final -->
+        <div class="social-icons mt-5">
+            <a href="https://www.facebook.com" target="_blank" class="text-light mx-3">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="text-light mx-3">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="text-light mx-3">
+                <i class="fab fa-tiktok fa-2x"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Nueva sección de Cursos Disponibles -->
+    <section id="cursos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Cursos Disponibles</h2>
+            <div class="row" id="cursos-container">
+                <!-- Las cards de cursos se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Nuestros Servicios</h2>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/training.jpg" class="card-img-top" alt="Entrenamiento Personalizado">
+                        <div class="card-body">
+                            <h5 class="card-title">Entrenamiento Personalizado</h5>
+                            <p class="card-text">Trabaja con nuestros entrenadores expertos para lograr tus objetivos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/sana.jpg" class="card-img-top" alt="Planes Nutricionales">
+                        <div class="card-body">
+                            <h5 class="card-title">Planes Nutricionales</h5>
+                            <p class="card-text">Mejora tu alimentación con nuestras guías especializadas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/group.jpg" class="card-img-top" alt="Clases Grupales">
+                        <div class="card-body">
+                            <h5 class="card-title">Clases Grupales</h5>
+                            <p class="card-text">Desde yoga hasta HIIT, únete a nuestras clases llenas de energía.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resto de tus secciones existentes (Entrenadores, BMI, Nosotros, Ubicación, Footer) -->
+    <!-- Calculadora de BMI -->
+    <section id="bmi-calculator" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" id="bmi-title">Calculadora de IMC</h2>
+            <div class="row justify-content-center align-items-center bmi-container">
+                <!-- Formulario de BMI -->
+                <div class="col-md-6">
+                    <form id="bmiForm" class="text-center">
+                        <div class="form-group">
+                            <label for="weight">Peso (kg)</label>
+                            <input type="number" id="weight" class="form-control" placeholder="Ingresa tu peso">
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Altura (cm)</label>
+                            <input type="number" id="height" class="form-control" placeholder="Ingresa tu altura">
+                        </div>
+                        <button type="button" class="btn btn-custom btn-block mt-3" onclick="calculateBMI()">Calcular BMI</button>
+                    </form>
+                </div>
+                <!-- Resultado de BMI -->
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div id="bmiResult" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Sobre Nosotros</h2>
+                    <p>Body Fit Center ha estado transformando vidas durante más de 10 años. Creemos en la importancia de un estilo de vida saludable y ofrecemos instalaciones de primera calidad, entrenadores expertos y una comunidad dedicada a ayudarte a alcanzar tus objetivos.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="images/gym_interior.jpg" class="img-fluid" alt="Interior del Gimnasio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa de Google -->
+    <section id="ubicacion" class="py-3">
+        <div class="container text-center">
+            <h2>Nuestra Ubicación</h2>
+            <p>De Las Orquídeas 403, Jardines de Jerez, 37530 León de los Aldama, Gto.</p>
+            <p>
+                <b>Telefono: 4771234567</b> 
+                <i class="bi bi-whatsapp" style="font-size: 20px; vertical-align: middle;"></i>
+            </p>
+            <iframe src="https://www.google.com/maps/embed?..."></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Body Fit Center. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        window.onscroll = function() {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        function calculateBMI() {
+            const weight = document.getElementById("weight").value;
+            const height = document.getElementById("height").value;
+            if (weight > 0 && height > 0) {
+                const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+                let result = '';
+                if (bmi < 18.5) {
+                    result = 'Bajo peso';
+                } else if (bmi >= 18.5 && bmi <= 24.9) {
+                    result = 'Peso normal';
+                } else if (bmi >= 25 && bmi <= 29.9) {
+                    result = 'Sobrepeso';
+                } else {
+                    result = 'Obesidad';
+                }
+                document.getElementById("bmiResult").innerHTML = `<h4>Tu BMI es: ${bmi}</h4><p>${result}</p>`;
+            } else {
+                document.getElementById("bmiResult").innerHTML = '<p style="color:red;">Por favor ingresa valores válidos</p>';
+            }
+        }
+
+        async function cargarCursos() {
+            try {
+                const response = await fetch('/api/cursos/obtener');
+                const cursos = await response.json();
+
+                const cursosContainer = document.getElementById('cursos-container');
+                cursosContainer.innerHTML = '';
+
+                cursos.forEach(curso => {
+                    const cursoCard = document.createElement('div');
+                    cursoCard.classList.add('col-md-4', 'mb-4');
+                    cursoCard.innerHTML = `
+                        <div class="card h-100">
+                            <img src="${curso.imagen_url}" class="card-img-top" alt="${curso.nombre}">
+                            <div class="card-body">
+                                <h5 class="card-title">${curso.nombre}</h5>
+                                <p class="card-text">${curso.descripcion}</p>
+                                <p><strong>Costo:</strong> $${curso.costo}</p>
+                                <p><strong>Duración:</strong> ${curso.duracion}</p>
+                                <a href="cursos.html" class="btn btn-primary">Más Información</a>
+                            </div>
+                        </div>
+                    `;
+                    cursosContainer.appendChild(cursoCard);
+                });
+            } catch (error) {
+                console.error('Error al cargar cursos:', error);
+            }
+        }
+
+        // Llama a la función al cargar la página
+        cargarCursos();
+    </script>
+</body>
+</html>

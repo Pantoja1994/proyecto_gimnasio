@@ -1,0 +1,168 @@
+@import 'geist/dist/geist.css';
+/* Estilo general para la página de retos */
+body {
+    
+    background-color: #1c1c1c; /* Fondo oscuro para toda la página */
+    color: white; /* Texto blanco para mejor legibilidad */
+    margin: 0;
+    padding: 0;
+}
+
+/* Título del formulario dentro del contenedor */
+.formulario h1 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: #f0ad4e; /* Color dorado */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Título de la sección de retos */
+h2 {
+    font-size: 2rem; /* Tamaño del título */
+    color: #e67e22; /* Color dorado para el título */
+}
+
+/* Estilo para las cards */
+/* Ajustar las tarjetas para estar más juntas */
+.card {
+    margin-bottom: 2px; /* Reducir el margen inferior de las cards */
+    background-color: #222; /* Fondo oscuro para las cards */
+    border: none; /* Sin borde para un estilo más limpio */
+    transition: transform 0.3s; /* Efecto de transformación */
+    margin: 0 2px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Estilo para las imágenes de las tarjetas */
+.card-img-top {
+    height: 100%; /* Altura fija para las imágenes */
+    object-fit: cover; /* Cubrir el espacio de la imagen sin distorsionar */
+}
+
+/* Títulos y textos dentro de las cards */
+.card-title {
+    color: #e67e22; /* Color del título en las cards */
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card-body {
+    display: flex; /* Utiliza flexbox para alinear el contenido */
+    flex-direction: column; /* Permite que el contenido se apile verticalmente */
+    justify-content: space-between; /* Espacio entre elementos */
+    flex-grow: 1; /* Permite que el cuerpo de la tarjeta crezca para ocupar el espacio restante */
+}
+
+.card-text {
+    color: #ccc; /* Color gris claro para el texto de las cards */
+    margin-bottom: 10px;
+}
+
+/* Botón dentro de las cards (si decides añadir uno) */
+.btn-custom {
+    background-color: #e67e22; /* Color del botón */
+    color: white; /* Color del texto en el botón */
+    border: none;
+    border-radius: 0; /* Sin bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de la fuente */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    transition: background-color 0.3s ease; /* Transición para el hover */
+}
+
+.btn-custom:hover {
+    background-color: #d35400; /* Color más oscuro al pasar el mouse */
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+    background-color: #222;  /* Fondo oscuro */ 
+    padding: 20px;
+    border-radius: 8px; /* Bordes suaves */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra sutil */
+    min-height: 400px; /* Altura mínima para asegurarse de que el fondo sea visible */
+}
+
+.containerReto{
+    max-width: 1200px;
+    margin: auto;
+}
+
+/*Animacion de cambiar de card a pago*/
+.fade {
+    transition: opacity 0.3s ease-in-out; /* Ajusta la duración y la función de tiempo */
+    opacity: 1; /* Estilo visible */
+}
+
+.hidden {
+    opacity: 0; /* Estilo oculto */
+    pointer-events: none; /* Desactiva eventos cuando está oculto */
+    height: 0; /* Opcional: Ocultar el espacio ocupado */
+}
+
+/*Estilos de etiqueta de formulario*/
+/* Etiquetas de los campos */
+.form-label {
+    font-weight: bold;
+    color: #f0ad4e; /* Color dorado para consistencia */
+}
+
+/* Estilo del botón de envío */
+.btn-primary {
+    background-color: #9e3703;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+/* Efecto hover para el botón */
+.btn-primary:hover {
+    background-color: #812d03;
+}
+
+/* Estilo para el campo de entrada */
+.form-control:focus {
+    border-color: #f0ad4e; /* Color dorado al enfocar */
+    box-shadow: 0 0 8px rgba(240, 173, 78, 0.4); /* Sombra dorada al enfocar */
+}
+
+/* Estilo para el pie de página */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #777;
+}
+
+/* Animación de transición */
+.fade {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* Desactiva los eventos cuando está oculto */
+}
+
+/* Estilo adicional para el formulario */
+#formulario-registro {
+    background-color: #222; /* Fondo oscuro para el formulario */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+#formulario-registro h1 {
+    color: #f0ad4e;
+
+}

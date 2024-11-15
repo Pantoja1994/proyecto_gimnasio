@@ -1,0 +1,216 @@
+
+/*Font*/
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1c1c1c; /* Fondo oscuro para toda la página */
+    color: white; /* Texto blanco para mejor legibilidad */
+}
+
+h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+
+/* Hero section */
+.hero {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgb(237, 237, 237);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para mejorar la legibilidad */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para mejorar la legibilidad */
+}
+
+.hero .btn-custom {
+    background-color: #e67e22 !important;  /* Botón naranja */
+    color: white !important; /* Color del texto */
+    border: none;
+    border-radius: 0; /* Sin bordes redondeados */
+}
+
+.hero .btn-custom:hover {
+    background-color: #d35400 !important;  /* Color naranja más oscuro al pasar el mouse */
+    color: white;
+}
+
+.hero .social-icons {
+    position: absolute;
+    bottom: 20px; /* Ajusta la distancia desde el fondo */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #e67e22; /* Cambiar color al pasar el ratón */
+}
+
+/* Services section */
+#services .card {
+    transition: transform 0.3s;
+}
+
+#services .card:hover {
+    transform: translateY(-10px);
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+}
+
+/* Navbar personalizado */
+.navbar {
+    background-color: transparent;
+    padding: 1rem 0;
+    transition: background-color 0.3s ease;
+}
+
+/* Logo centrado */
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 1;
+}
+
+/* Estilo del logo */
+.navbar-brand .logo {
+    width: 150px;
+    transition: width 0.3s ease;
+}
+
+/* Links del navbar */
+.navbar .nav-link {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff !important; /* Asegura que el texto sea negro */
+    text-transform: uppercase;
+    padding: 1rem;
+    transition: color 0.3s ease;
+    text-shadow: none !important; /* Asegura que no haya sombra de texto */
+}
+
+/* Hover en los links */
+.navbar .nav-link:hover {
+    color: #e67e22 !important; /* Asegura que el hover cambie a naranja */
+}
+
+
+/* Navbar con fondo sólido al hacer scroll */
+.navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Color negro con 80% de opacidad */
+}
+
+/* Cambiar tamaño del logo al hacer scroll */
+.navbar.scrolled .navbar-brand .logo {
+    width: 80px;
+}
+
+#trainers {
+    background-color: #1c1c1c !important; /* Fondo oscuro */
+    color: white; /* Texto blanco para mejor legibilidad */
+}
+
+#trainers h2,
+#trainers p,
+#trainers h4 {
+    color: white; /* Cambia el color de los títulos y texto a blanco */
+}
+
+/* Opcional: Cambia el color del texto secundario */
+#trainers .text-muted {
+    color: #cccccc; /* Texto en un gris claro */
+}
+/* Estilo para la sección de coaches sin contorno y fotos cuadradas */
+.coach img {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.coach:hover img {
+    transform: scale(1.1);
+}
+
+.coach h4 {
+    margin-top: 15px;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.coach p {
+    color: #777;
+    font-size: 0.95rem;
+}
+
+/* Contenedor que permite el uso de Flexbox para alinear elementos */
+.bmi-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre el formulario y el resultado */
+    align-items: center; /* Centra verticalmente ambos elementos */
+}
+
+/* Asegura que el resultado esté alineado y centrado */
+#bmiResult {
+    /*background-color: #f8f9fa; /* Color de fondo opcional para el resultado */
+    padding: 20px; /* Espaciado alrededor del resultado */
+    border-radius: 5px; /* Bordes redondeados opcionales */
+    min-width: 150px; /* Ancho mínimo del resultado */
+}
+
+/* Formulario centrado */
+#bmiForm {
+    max-width: 100%;
+}
+
+#bmi-title {
+    color: #f0ad4e;
+}
+
+
+/* Botón personalizado para la calculadora de BMI */
+.btn-custom {
+    background-color: rgba(0, 0, 0, 0.8) !important; /* Color negro con 80% de opacidad */
+    color: white;
+    border: none;
+    border-radius: 0; /* Sin bordes redondeados */
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #333; /* Color más claro al pasar el mouse */
+    color: white;
+}
+
+#about{
+    background-color: #000000 !important;
+    color: white;
+}
+
+.col-md-6 h2 {
+    padding-top: 50px;
+}
+
+#ubicacion{
+    margin-bottom: 80px;
+}

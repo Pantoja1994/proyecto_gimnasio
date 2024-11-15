@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Nutriólogo</title>
+    <link rel="stylesheet" href="css/stylesDashboard.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Botón para mostrar/ocultar el menú -->
+    <button class="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Menú lateral -->
+    <div class="sidebar hidden" id="sidebar">
+        <div class="logo-container">
+            <img src="images/BodyFitCenterLogo.png" alt="Logo BodyFitCenter" class="logo">
+        </div>
+        <div class="user-info">
+            <p>Bienvenido, <span id="user-name">Usuario:</span></p>
+        </div>
+        <h2>Opciones</h2>
+        <a href="#" id="dashboard-menu" class="menu-link active" onclick="mostrarDashboard()">Retos</a>
+        <a href="#" id="usuarios-menu" class="menu-link" onclick="mostrarUsuarios()">Usuarios</a>
+        <a href="#" id="estadisticas-menu" class="menu-link" onclick="mostrarEstadisticas()">Estadísticas</a>
+        <a href="#" id="cursos-menu" class="menu-link" onclick="mostrarCursos()">Cursos</a>
+        <a href="#" id="configuracion-menu" class="menu-link" onclick="mostrarConfiguracion()">Configuración</a>
+        <a href="/api/logout">Cerrar Sesión</a>
+    </div>
+    <!-- Botón para alternar el modo oscuro/claro -->
+    <button id="modoOscuroBtn" class="btn btn-light" style="position: absolute; top: 20px; right: 20px; z-index: 1001;">
+        Modo Oscuro
+    </button>
+
+    <!-- Contenido principal del Dashboard -->
+    <div class="main-content expanded" id="main-content">
+        <div class="container" id="dashboard-section">
+            <h1>Usuarios Registrados en el Reto</h1>
+            <table id="user-table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Género</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Días de Actividad</th>
+                        <th>Tipo de Actividad</th>
+                        <th>Objetivo</th>
+                        <th>Teléfono</th>
+                        <th>Reto Seleccionado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body">
+                    <!-- Los registros de usuarios se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sección de Usuarios en Cards -->
+        <div class="container" id="usuarios-section" style="display: none;">
+            <h1>Usuarios Registrados en el Reto</h1>
+            <div class="cards-container" id="cards-container">
+                <!-- Aquí se cargarán las cards de los usuarios -->
+            </div>
+            <div id="imageModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div id="caption"></div>
+            </div>
+        </div>
+        
+        <!-- Sección de Estadísticas -->
+        <div class="container" id="estadisticas-section" style="display: block;">
+            <h2>Estadísticas</h2>
+            <!-- Filtros -->
+            <div id="estadisticas-filtros" class="mb-4">
+                <label for="tipo-reto">Tipo de Reto:</label>
+                <select id="tipo-reto">
+                    <option value="">Todos</option>
+                    <option value="perder_peso">Perder Peso</option>
+                    <option value="ganar_musculo">Ganar Músculo</option>
+                    <!-- Agrega más opciones según tus tipos de retos -->
+                </select>
+
+                <label for="edad-minima">Edad Mínima:</label>
+                <input type="number" id="edad-minima" placeholder="Edad mínima" min="0" />
+
+                <label for="edad-maxima">Edad Máxima:</label>
+                <input type="number" id="edad-maxima" placeholder="Edad máxima" min="0" />
+
+                <label for="genero">Género:</label>
+                <select id="genero">
+                    <option value="">Todos</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+
+                <button id="aplicarFiltrosBtn" class="btn btn-primary">Aplicar Filtros</button>
+            </div>
+            <!-- Contenedor de Resultados -->
+            <div id="estadisticas-resultados" class="estadisticas-container mt-3">
+                <!-- Aquí se mostrarán las estadísticas filtradas -->
+            </div>
+            <button id="descargarReporteCsvBtn" class="btn btn-primary btn-lg mt-3 mb-3">Descargar Reporte en CSV</button>
+
+            <div class="chart-container-wrapper">
+                <div class="chart-container">
+                    <canvas id="estadisticasChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="edadChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="generoChart"></canvas>
+                </div>
+            </div>
+            
+             
+        </div>
+
+
+        <!-- Sección de Cursos -->
+        <div class="container" id="cursos-section" style="display: none;">
+            <h2>Gestión de Cursos</h2>
+            <button class="btn btn-primary mb-3" onclick="mostrarFormularioCurso()">Crear Nuevo Curso</button>
+            <div class="row" id="cursos-cards-container">
+                <!-- Las cards de cursos se cargarán aquí dinámicamente -->
+            </div>
+        </div>        
+        
+        <!-- Formulario para Crear/Modificar Curso -->
+        <div class="container mt-5" id="curso-formulario" style="display: none; max-width: 600px;">
+            <h3 class="text-center mb-4" id="formulario-titulo">Registrar Nuevo Curso</h3>
+            <form id="form-curso" class="p-4 shadow bg-white rounded" enctype="multipart/form-data">
+                <input type="hidden" id="curso-id" name="curso_id">
+                <div class="form-group mb-3">
+                    <label for="nombre">Nombre del Curso</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese el nombre del curso" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="descripcion">Descripción del Curso</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Descripción del curso" required></textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="costo">Costo</label>
+                    <input type="number" class="form-control" id="costo" name="costo" placeholder="Ingrese el costo" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="duracion">Duración</label>
+                    <input type="text" class="form-control" id="duracion" name="duracion" placeholder="Duración (e.g., 4 semanas)" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="imagen">Imagen del Curso</label>
+                    <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*">
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary mt-3" id="submit-button">Guardar Curso</button>
+                    <button type="button" class="btn btn-secondary mt-3" onclick="cancelarFormularioCurso()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Tabla de Inscripciones -->
+        <div class="container mt-5" id="inscripciones-section" style="display: none;">
+            <h3 class="text-center mb-4">Inscripciones en el Curso</h3>
+            <button class="btn btn-secondary mb-3" onclick="regresarACursos()">Regresar a Cursos</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Teléfono</th>
+                        <th>Correo Electrónico</th>
+                        <th>Fecha de Inscripción</th>
+                    </tr>
+                </thead>
+                <tbody id="inscripciones-table-body">
+                    <!-- Las inscripciones se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pestaña de Configuración -->
+        <div class="container" id="configuracion-section" style="display: none;">
+            <h2>Configuración de Usuarios</h2>
+            <button class="btn btn-primary mb-3" onclick="mostrarFormularioCrearUsuario()">Crear Usuario</button>
+
+            <!-- Formulario para Crear/Editar Usuario -->
+            <div class="container mt-3" id="formulario-crear-usuario" style="display: none;">
+                <h3 id="titulo-formulario-usuario">Crear Nuevo Usuario</h3>
+                <form id="form-crear-usuario">
+                    <div class="form-group">
+                        <label for="username">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre_completo">Nombre Completo</label>
+                        <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rol">Rol</label>
+                        <select class="form-control" id="rol" name="rol" required>
+                            <option value="usuario">Usuario</option>
+                            <option value="nutriologo">Nutriólogo</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelarFormularioUsuario()">Cancelar</button>
+                </form>
+            </div>
+
+            <!-- Pestaña de Configuración - Cards de Usuarios -->
+            <div class="container" id="usuarios-cards-section" style="display: none;">
+                <h2>Administración de Usuarios</h2>
+                <div class="row" id="usuarios-cards-container">
+                    <!-- Aquí se cargarán las cards de los usuarios -->
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="ir-arriba" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,875 @@
+/* Estilos generales del dashboard */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+/* Estilo del menú lateral desplegable */
+.sidebar {
+    width: 250px;
+    background-color: #2d3436;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    color: #b2bec3;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #636e72;
+    color: #fff;
+}
+
+.sidebar a.active {
+    background-color: #4e73df;
+    color: #fff;
+}
+
+/* Botón para mostrar/ocultar el menú */
+.toggle-sidebar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #2d3436;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* Contenedor principal */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.expanded {
+    margin-left: 0;
+}
+
+.container {
+    max-width: 100%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #dd7600;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    word-wrap: break-word;
+}
+
+table thead {
+    background-color: #4e73df;
+    color: #fff;
+}
+
+table th {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+table tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+/* Botón de eliminar */
+.card .button-group {
+    display: flex;
+    gap: 8px; /* Espacio entre botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+}
+
+.card .btn {
+    flex: 1; /* Hace que los botones ocupen el mismo ancho */
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.card .btn:hover {
+    opacity: 0.9;
+}
+
+/* Botón 'Ir Arriba' */
+#ir-arriba {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #3b3b3b; /* Gris Oxford */
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#ir-arriba:hover {
+    background-color: #5b5b5b;
+}
+
+
+/* Logo y información del usuario en el menú lateral */
+.logo-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    width: 80%;
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    text-align: center;
+    color: #b2bec3;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Estilos para la sección de cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 15px;
+}
+/*nuevo*/
+.cards-container .card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 20px;
+    margin: 10px;
+}
+
+.cards-container .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cards-container .card img {
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+/*nuevo fin*/
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card .card-body {
+    padding: 10px;
+}
+
+.card .card-body p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.card .upload-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #4e73df;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card .upload-button:hover {
+    background-color: #344e8c;
+}
+
+.upload-text {
+    color: #4e73df;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.upload-text:hover {
+    text-decoration: underline;
+}
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.user-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%; /* Limita el ancho máximo al 90% del ancho de la pantalla */
+    max-height: 80vh; /* Limita la altura máxima al 80% de la altura de la pantalla */
+    width: auto; /* Ajusta el ancho de la imagen automáticamente */
+    height: auto; /* Ajusta la altura de la imagen automáticamente */
+    border-radius: 10px; /* Añade bordes redondeados a la imagen */
+    animation: zoom 0.6s; /* Aplica la animación de zoom al contenido del modal */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Estilos para los campos de carga de archivos */
+.upload-fields {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.upload-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #f19306;
+}
+
+.upload-button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff !important; /* Fondo blanco forzado */
+    color: #333 !important; /* Texto gris oscuro */
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: border-color 0.3s, color 0.3s;
+    appearance: none; /* Elimina estilos específicos del navegador */
+    -webkit-appearance: none; /* Elimina estilos en navegadores WebKit */
+}
+
+.upload-button:hover {
+    border-color: #4e73df;
+    color: #4e73df;
+    background-color: #fff !important; /* Asegura que el fondo se mantenga blanco al hacer hover */
+}
+
+.upload-confirm {
+    padding: 10px 15px;
+    background-color: #fff; /* Fondo blanco */
+    color: #4e73df; /* Color de texto principal */
+    border: 1px solid #4e73df;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.upload-confirm:hover {
+    background-color: #4e73df;
+    color: #fff;
+}
+/*eSTILOS PARA EL BOTON DE CANCELAR*/
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.upload-confirm {
+    padding: 10px 15px;
+    background-color: #4e73df;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-confirm:hover {
+    background-color: #2d58a1;
+}
+
+.cancel-upload {
+    padding: 10px 15px;
+    background-color: #e74a3b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-upload:hover {
+    background-color: #c0392b;
+}
+
+/*Estilos del formulario para crear y editar cursos*/
+#curso-formulario {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#curso-formulario h3 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#curso-formulario .form-group label {
+    font-weight: 500;
+    color: #555;
+}
+
+#curso-formulario .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#curso-formulario .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#curso-formulario .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+#curso-formulario .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#curso-formulario .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+#curso-formulario .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+#curso-formulario .d-flex.justify-content-between {
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+#descripcion {
+    min-height: 150px; /* Ajusta este valor según la altura que prefieras */
+    resize: vertical; /* Permite que el usuario ajuste la altura si lo desea */
+}
+
+/*Borrar*/
+/* Estilo de la sección de estadísticas */
+#estadisticas-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#estadisticas-section h2 {
+    font-size: 1.8rem;
+    color: #4e73df;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#estadisticas-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+#estadisticas-filtros label {
+    font-weight: 500;
+    color: #333;
+}
+
+#estadisticas-filtros select, 
+#estadisticas-filtros input {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+#aplicarFiltrosBtn {
+    background-color: #4e73df;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+#aplicarFiltrosBtn:hover {
+    background-color: #344e8c;
+}
+
+/* Tabla de resultados de estadísticas */
+.estadisticas-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.estadisticas-container th, 
+.estadisticas-container td {
+    padding: 12px;
+    text-align: center;
+}
+
+.estadisticas-container th {
+    background-color: #4e73df;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.estadisticas-container tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.estadisticas-container tr:hover {
+    background-color: #e2e6ea;
+}
+
+.filtros-aplicados {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.filtros-aplicados p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.filtros-aplicados strong {
+    color: #4e73df;
+    font-size: 1rem;
+}
+
+.filtros-aplicados span {
+    font-weight: 500;
+    color: #333;
+}
+
+.filtros-aplicados strong {
+    font-size: 1rem;
+}
+
+#descargarReporteCsvBtn {
+    background-color: #4e73df;
+    border-color: #4e73df;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#descargarReporteCsvBtn:hover {
+    background-color: #375a7f;
+    border-color: #375a7f;
+    transform: scale(1.05); /* Pequeño efecto de aumento al pasar el cursor */
+}
+
+#descargarReporteCsvBtn:active {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+    transform: scale(0.98); /* Efecto de reducción al hacer clic */
+}
+/*PAra los graficos*/
+.chart-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*sTYLES MODO OSCURO*/
+/* General Modo Oscuro */
+.modo-oscuro {
+    background-color: #2c2c2c;
+    color: #f3f3f3;
+}
+/* Modo oscuro para el contenedor de la gráfica */
+.modo-oscuro .chart-container {
+    background-color: #333;
+    color: #f3f3f3;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Fondos específicos para contenedores */
+.modo-oscuro .container, 
+.modo-oscuro .card, 
+.modo-oscuro .table, 
+.modo-oscuro .btn, 
+.modo-oscuro .form-container, 
+.modo-oscuro .modal-content {
+    background-color: #333;
+    color: #f3f3f3;
+}
+
+/* Textos en cards */
+.modo-oscuro .card-body p,
+.modo-oscuro .card-body label {
+    color: #f3f3f3;
+}
+
+/* Cards en modo oscuro */
+.modo-oscuro .cards-container .card {
+    background-color: #444;
+    color: #f3f3f3;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones en modo oscuro */
+.modo-oscuro .btn-primary {
+    background-color: #4e73df;
+    color: #fff;
+    border-color: #4e73df;
+}
+
+.modo-oscuro .btn-primary:hover {
+    background-color: #375a7f;
+}
+
+.modo-oscuro .btn-danger {
+    background-color: #e74a3b;
+    color: #fff;
+}
+
+.modo-oscuro .btn-light {
+    background-color: #666;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Textos y encabezados */
+.modo-oscuro h1, .modo-oscuro h2, .modo-oscuro h3, 
+.modo-oscuro .modal-title {
+    color: #ffa500; /* Ajuste para el título en modo oscuro */
+}
+
+.modo-oscuro p, .modo-oscuro label {
+    color: #f3f3f3;
+}
+
+/* Fondo y bordes de inputs y selects */
+.modo-oscuro input, 
+.modo-oscuro select, 
+.modo-oscuro textarea, 
+.modo-oscuro .form-control {
+    background-color: #555;
+    color: #fff;
+    border: 1px solid #666;
+}
+
+.modo-oscuro input::placeholder, 
+.modo-oscuro textarea::placeholder {
+    color: #ccc;
+}
+
+/* Modal para imágenes */
+.modo-oscuro .modal {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Sección de "Filtros aplicados" en estadísticas */
+.modo-oscuro .filtros-aplicados {
+    background-color: #444;
+    color: #f3f3f3;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Ajuste de colores en los inputs y labels dentro del formulario */
+.modo-oscuro .form-container .form-group label,
+.modo-oscuro .form-container .form-group input,
+.modo-oscuro .form-container .form-group select,
+.modo-oscuro .form-container .form-group textarea {
+    color: #f3f3f3;
+    background-color: #444;
+    border: 1px solid #666;
+}
+
+/* Estilos específicos para las tablas en modo oscuro */
+.modo-oscuro .table thead {
+    background-color: #4e73df;
+    color: #fff;
+}
+
+.modo-oscuro .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #555;
+}
+
+.modo-oscuro .table-striped tbody tr:nth-of-type(even) {
+    background-color: #444;
+}
+/* Mantener color original en los botones de las cards y oscurecer al hover */
+.modo-oscuro .btn-info {
+    background-color: #17a2b8; /* Color verde original */
+    color: #fff;
+    border-color: #17a2b8;
+}
+.modo-oscuro .btn-info:hover {
+    background-color: #138496; /* Oscurecer en hover */
+}
+
+.modo-oscuro .btn-warning {
+    background-color: #ffc107; /* Color amarillo original */
+    color: #333;
+    border-color: #ffc107;
+}
+.modo-oscuro .btn-warning:hover {
+    background-color: #e0a800; /* Oscurecer en hover */
+}
+
+
+/* Fondo oscuro en el formulario de "Registrar Nuevo Curso" */
+.modo-oscuro .form-container {
+    background-color: #2c2c2c; /* Fondo oscuro del formulario */
+    color: #f3f3f3;
+}
+/* Modo oscuro para el formulario de "Registrar Nuevo Curso" */
+.modo-oscuro #curso-formulario {
+    background-color: #2c2c2c; /* Fondo oscuro para el formulario */
+    color: #f3f3f3; /* Color del texto */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Ajustes de inputs y labels dentro de #curso-formulario en modo oscuro */
+.modo-oscuro #curso-formulario label {
+    color: #f3f3f3;
+}
+
+.modo-oscuro #curso-formulario input,
+.modo-oscuro #curso-formulario select,
+.modo-oscuro #curso-formulario textarea {
+    background-color: #444; /* Fondo oscuro de los campos */
+    color: #fff; /* Color del texto */
+    border: 1px solid #666; /* Borde oscuro */
+}
+
+.modo-oscuro #curso-formulario input::placeholder,
+.modo-oscuro #curso-formulario textarea::placeholder {
+    color: #ccc; /* Color de los placeholders */
+}
+
+/* Botones en #curso-formulario para "Guardar Curso" y "Cancelar" */
+.modo-oscuro #curso-formulario .btn-primary {
+    background-color: #4e73df;
+    border-color: #4e73df;
+    color: #fff;
+}
+
+.modo-oscuro #curso-formulario .btn-primary:hover {
+    background-color: #375a7f;
+}
+
+.modo-oscuro #curso-formulario .btn-secondary {
+    background-color: #666;
+    border-color: #666;
+    color: #fff;
+}
+
+.modo-oscuro #curso-formulario .btn-secondary:hover {
+    background-color: #555;
+}
+
+.chart-container-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+.chart-container {
+    flex: 1 1 300px;
+    min-width: 300px;
+    max-width: 500px;
+    height: 300px;
+}

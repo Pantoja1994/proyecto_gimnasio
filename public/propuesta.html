@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página con Secciones Pegadas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylesProp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<!-- Navbar -->
+<nav id="navbar" class="navbar fixed-top navbar-transparent">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="images/BODYFITCENTERLOGO.png" alt="Logo" class="logo">
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav" id="nav-links">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><B>Inicio</B></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><B>Servicios</B></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><B>Contacto</B></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><B>Acerca de</B></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="section-1">
+    <section id="home" class="hero d-flex flex-column align-items-center justify-content-center text-center text-light content" style="background-image: url('images/gym1.jpg'); height: 100vh;">
+        <div class="container">
+            <h1 class="display-4">TRANSFORMA TU CUERPO Y MENTE</h1>
+            <p class="lead">Únete a <b>Body Fit Systems</b> hoy mismo</p>
+            <a href="retos.html" class="btn btn-custom btn-lg mt-4" ><b>ÚNETE AL RETO</b></a>
+        </div>
+    
+        <!-- Redes sociales centradas al final -->
+        <div class="social-icons mt-5">
+            <a href="https://www.facebook.com" target="_blank" class="text-light mx-3">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="text-light mx-3">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="text-light mx-3">
+                <i class="fab fa-tiktok fa-2x"></i>
+            </a>
+        </div>
+    </section>
+  </section>
+
+  <!-- Otras secciones -->
+  <section class="section-2 d-flex align-items-center justify-content-center">
+    <div class="container text-center">
+      <h1>Sección 2</h1>
+      <p>Contenido de la segunda sección.</p>
+    </div>
+  </section>
+
+  <!--<section class="section-2 d-flex align-items-center justify-content-center">
+    <div class="container text-center">
+      <h1>Sección 2</h1>
+      <p>Contenido de la segunda sección.</p>
+    </div>
+  </section>-->
+
+  <section class="section-3 d-flex align-items-center justify-content-center">
+    <!-- Calculadora de BMI -->
+    <section id="bmi-calculator" class="py-5 content">
+        <div class="container ">
+            <h2 class="text-center mb-4" id="bmi-title">Calculadora de IMC</h2>
+            <div class="row justify-content-center align-items-center bmi-container ">
+                <div class="col-md-6 ">
+                    <form id="bmiForm" class="text-center">
+                        <div class="form-group">
+                            <label for="weight">Peso (kg)</label>
+                            <input type="number" id="weight" class="form-control" placeholder="Ingresa tu peso">
+                        </div>
+                        <div class="form-group">
+                            <label for="height">Altura (cm)</label>
+                            <input type="number" id="height" class="form-control" placeholder="Ingresa tu altura">
+                        </div>
+                        <button type="button" class="btn btn-custom btn-block mt-3" onclick="calculateBMI()">Calcular BMI</button>
+                    </form>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <div id="bmiResult" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </section>
+
+  <section class="section-4 d-flex align-items-center justify-content-center">
+    <section id="ubicacion" class="py-3 content">
+        <div class="container text-center">
+            <h2>Ubicación</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.273904934755!2d-101.6411966913979!3d21.101643446345705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842bbf9c4b0ed6fd%3A0x79f5a6b2b31b5316!2sNUTRICIONISTA%20JUAN%20PAULO%20GARCIA%20EXPERTO%20EN%20EST%C3%89TICA%20CORPORAL%2C%20ENTRENAMIENTO%20Y%20NUTRICI%C3%93N%20FITNESS%20(GIMNASIO%20BODY%20FIT%20SYSTEMS)!5e0!3m2!1ses!2smx!4v1727225652007!5m2!1ses!2smx" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p>De Las Orquídeas 403, Jardines de Jerez, 37530 León de los Aldama, Gto.</p>
+                <p><b>Telefono: 4771234567</b> <i class="bi bi-whatsapp" style="font-size: 20px; vertical-align: middle;"></i></p>
+        </div>
+    </section>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="nav">
+      <a href="#section-1" class="nav-link">Inicio</a>
+      <a href="#section-2" class="nav-link">Servicios</a>
+      <a href="#section-3" class="nav-link">Contacto</a>
+    </div>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    <div class="rights">
+        © 2024 Body Fit Systems. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Script para ocultar la navbar cuando haces scroll hacia abajo y mostrarla cuando subes
+    let prevScrollPos = window.pageYOffset;
+
+    window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+
+    if (prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-80px";
+    }
+
+    prevScrollPos = currentScrollPos;
+    }
+
+    function calculateBMI() {
+        const weight = document.getElementById("weight").value;
+        const height = document.getElementById("height").value;
+    
+        if (weight > 0 && height > 0) {
+            const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+            let result = '';
+            if (bmi < 18.5) {
+                result = 'Bajo peso';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                result = 'Peso normal';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                result = 'Sobrepeso';
+            } else {
+                result = 'Obesidad';
+            }
+            document.getElementById("bmiResult").innerHTML = `<h4>Tu BMI es: ${bmi}</h4><p>${result}</p>`;
+        } else {
+            document.getElementById("bmiResult").innerHTML = '<p style="color:red;">Por favor ingresa valores válidos</p>';
+        }
+    }
+    //Para que el menu se muestre
+    document.getElementById('mobile-menu').addEventListener('click', function() {
+        const navLinks = document.getElementById('nav-links');
+        navLinks.classList.toggle('show'); // Alterna la clase "show" para mostrar/ocultar el menú
+    });
+  </script>
+</body>
+</html>
